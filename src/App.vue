@@ -1,7 +1,6 @@
 <template>
   <div id="nav">
     <router-view></router-view>
-    <button class="logout" @click="Logout">Logout</button>
   </div>
 </template>
 
@@ -24,15 +23,6 @@ export default {
         }
       })
     })
-
-    const Logout = () => {
-      getAuth().signOut()
-      .then(() => console.log('Signed out'))
-      .catch(err => alert(err.code))
-    }
-    return {
-      Logout
-    }
   }
 }
 </script>

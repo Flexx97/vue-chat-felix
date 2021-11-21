@@ -1,16 +1,25 @@
 <template>
   <div class="home">
-    Home
+     <h1>Home</h1>
+    <button class="logout" @click="Logout">Logout</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
+import {getAuth} from "firebase/auth";
 
 export default {
-  name: 'Home',
-  components: {
+  setup() {
 
+    const Logout = () => {
+      getAuth().signOut()
+          .then(() => console.log('Signed out'))
+          .catch(err => alert(err.code))
+    }
+    return {
+      Logout
+    }
   }
 }
 </script>
