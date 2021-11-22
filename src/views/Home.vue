@@ -1,25 +1,39 @@
 <template>
   <div class="home">
-     <h1>Home</h1>
-    <button class="logout" @click="Logout">Logout</button>
+    <home-menu></home-menu>
+    <div class="allchats">
+      <router-view></router-view>
+      <h1 v-if="route.path === '/'">Выберите что-нибудь из пункта меню</h1>
+    </div>
+
   </div>
 </template>
 
 <script>
-
-import {getAuth} from "firebase/auth";
+import HomeMenu from "@/components/HomeMenu";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
   setup() {
+    const router = useRouter()
+    const route = useRoute()
+    console.log(route.path)
 
-    const Logout = () => {
-      getAuth().signOut()
-          .then(() => console.log('Signed out'))
-          .catch(err => alert(err.code))
-    }
     return {
-      Logout
+      route
     }
+  },
+  components: {
+    HomeMenu,
   }
 }
 </script>
+<style>
+.home {
+  display: flex;
+  justify-content: space-between;
+}
+.allchats{
+  min-width: 90%;
+}
+</style>
