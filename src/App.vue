@@ -6,7 +6,7 @@
 
 <script>
 import {useRoute, useRouter} from "vue-router";
-import {onBeforeMount, ref} from "vue";
+import {onBeforeMount} from "vue";
 import {getAuth} from 'firebase/auth'
 export default {
   setup() {
