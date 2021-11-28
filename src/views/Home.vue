@@ -17,8 +17,6 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
-    console.log(route.path)
-
     return {
       route
     }
@@ -32,8 +30,9 @@ export default {
 .home {
   display: flex;
   justify-content: space-between;
+  min-height: 100%;
 }
 .allchats{
-  min-width: 90%;
+  min-width: 92%;
 }
 </style>

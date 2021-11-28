@@ -4,6 +4,7 @@ import login from "@/views/login";
 import register from "@/views/register";
 import Chats from "@/views/Chats";
 import Profile from "@/views/Profile";
+import userChat from "@/components/userChat";
 
 const routes = [
   {
@@ -13,7 +14,12 @@ const routes = [
     children: [{
       path: '/chats',
       name: 'Chats',
-      component: Chats
+      component: Chats,
+      children: [{
+        name: 'userChat',
+        path: ':id',
+        component: userChat
+      }]
     },{
       path: '/profile',
       name: 'Profile',
@@ -29,12 +35,14 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: register
-  }
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  linkExactActiveClass: 'active',
+  linkExactPathActiveClass: 'active'
 })
 
 export default router
